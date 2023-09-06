@@ -1,6 +1,7 @@
 // Model
 
-var dice = [0, 0];
+var dice1 = 0;
+var dice2 = 0;
 var currentDiceSum = 0;
 var previousDiceSum = 0;
 var turn = 0;
@@ -24,8 +25,8 @@ function updateView() {
     <div id="turns"></div>
     `;
 
-    document.getElementById('dice1').innerHTML = `Dice 1: ${dice[0]}`;
-    document.getElementById('dice2').innerHTML = `Dice 2: ${dice[1]}`;
+    document.getElementById('dice1').innerHTML = `Dice 1: ${dice1}`;
+    document.getElementById('dice2').innerHTML = `Dice 2: ${dice2}`;
     document.getElementById('sumCurrent').innerHTML = `Sum this round: ${currentDiceSum}`;
     document.getElementById('sumPrevious').innerHTML = `Sum previous round: ${previousDiceSum}`;
     document.getElementById('points').innerHTML = `Points: ${points}`;
@@ -37,15 +38,14 @@ function updateView() {
 
 function rollDice() {
     // adding one here because 0 does not exist on a dice
-    for (let i = 0; i < maxDice; i++) {
-        dice[i] = Math.floor(Math.random() * 6) + 1;
-    }
+    dice1 = Math.floor(Math.random() * 6) + 1;
+    dice2 = Math.floor(Math.random() * 6) + 1;
 
-    return dice[0] + dice[1];
+    return dice1 + dice2;
 }
 
 function newGame() {
-    dice[0] = dice[1] = 0;
+    dice1 = dice2 = 0;
     currentDiceSum = 0;
     previousDiceSum = 0;
     isFirstTurn = true;
@@ -55,7 +55,7 @@ function newGame() {
     updateView();
 }
 
-function checkSnakeEyes(inSum) {
+function snakeEyes(inSum) {
     if (inSum == 2) {
         return true;
     }
@@ -75,7 +75,7 @@ function gameLoop() {
         if (currentDiceSum == 2 || currentDiceSum == 3 || currentDiceSum == 12) {
             console.log("You lose");
 
-            if (checkSnakeEyes(currentDiceSum)) {
+            if (snakeEyes(currentDiceSum)) {
                 // hissss
             }
 
