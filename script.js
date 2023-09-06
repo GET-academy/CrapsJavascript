@@ -7,6 +7,7 @@ var turn = 0;
 var points = 0;
 var isFirstTurn = true;
 var didGameEnd = false;
+var maxDice = 2;
 
 
 // View
@@ -36,10 +37,11 @@ function updateView() {
 
 function rollDice() {
     // adding one here because 0 does not exist on a dice
-    dice[0] = Math.floor(Math.random() * 6) + 1;
-    dice[1] = Math.floor(Math.random() * 6) + 1;
+    for (let i = 0; i < maxDice; i++) {
+        dice[i] = Math.floor(Math.random() * 6) + 1;
+    }
 
-    return tempSum = dice[0] + dice[1];
+    return dice[0] + dice[1];
 }
 
 function newGame() {
@@ -61,21 +63,23 @@ function gameLoop() {
         if (currentDiceSum == 7 || currentDiceSum == 11) {
             console.log("You win");
             didGameEnd = true;
-        } else if (currentDiceSum == 2 || currentDiceSum == 3 || currentDiceSum == 12) {
-            if (currentDiceSum == 2) {
-                console.log("Snake eyes");
-            } else {
-                console.log("You lose");
-            }
+        }
+        
+        if (currentDiceSum == 2 || currentDiceSum == 3 || currentDiceSum == 12) {
+            console.log("You lose");
             didGameEnd = true;
         }
         isFirstTurn = false;
     }
+
     else {
+
         if (previousDiceSum == currentDiceSum) {
             console.log("You win");
             didGameEnd = true;
-        } else if (currentDiceSum == 7) {
+        }
+        
+        if (currentDiceSum == 7) {
             console.log("You lose");
             didGameEnd = true;
         }
