@@ -55,6 +55,13 @@ function newGame() {
     updateView();
 }
 
+function checkSnakeEyes(inSum) {
+    if (inSum == 2) {
+        return true;
+    }
+    return false;
+}
+
 function gameLoop() {
     turn++;
     currentDiceSum = rollDice();
@@ -67,6 +74,11 @@ function gameLoop() {
         
         if (currentDiceSum == 2 || currentDiceSum == 3 || currentDiceSum == 12) {
             console.log("You lose");
+
+            if (checkSnakeEyes(currentDiceSum)) {
+                // hissss
+            }
+
             didGameEnd = true;
         }
         isFirstTurn = false;
