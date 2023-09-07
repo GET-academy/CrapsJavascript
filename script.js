@@ -55,39 +55,46 @@ function snakeEyes(inSum) {
     return false;
 }
 
+function checkPlayerStatusFirstRound() {
+    if (currentDiceSum == 7 || currentDiceSum == 11) {
+        console.log("You win");
+        didGameEnd = true;
+    }
+
+    if (currentDiceSum == 2 || currentDiceSum == 3 || currentDiceSum == 12) {
+        console.log("You lose");
+    
+        if (snakeEyes(currentDiceSum)) {
+            // hissss
+        }
+    
+        didGameEnd = true;
+    }
+}
+
+function checkPlayerStatus() {
+    if (previousDiceSum == currentDiceSum) {
+        console.log("You win");
+        didGameEnd = true;
+    }
+
+    if (currentDiceSum == 7) {
+        console.log("You lose");
+        didGameEnd = true;
+    }
+}
+
 function gameLoop() {
     turn++;
     currentDiceSum = rollDice();
 
     if (isFirstTurn) {
-        if (currentDiceSum == 7 || currentDiceSum == 11) {
-            console.log("You win");
-            didGameEnd = true;
-        }
-        
-        if (currentDiceSum == 2 || currentDiceSum == 3 || currentDiceSum == 12) {
-            console.log("You lose");
-
-            if (snakeEyes(currentDiceSum)) {
-                // hissss
-            }
-
-            didGameEnd = true;
-        }
+        checkPlayerStatusFirstRound();
         isFirstTurn = false;
     }
 
     else {
-
-        if (previousDiceSum == currentDiceSum) {
-            console.log("You win");
-            didGameEnd = true;
-        }
-        
-        if (currentDiceSum == 7) {
-            console.log("You lose");
-            didGameEnd = true;
-        }
+        checkPlayerStatus();
     }
 
     points += currentDiceSum;
