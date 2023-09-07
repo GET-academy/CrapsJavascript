@@ -17,20 +17,13 @@ function updateView() {
     document.getElementById('app').innerHTML = /*HTML*/`
     <button id="rollDiceButton" onclick='gameLoop()'>Roll dice</button>
     <button id="newGameButton" onclick='newGame()'>New game</button>
-    <div id="dice1"></div>
-    <div id="dice2"></div>
-    <div id="sumCurrent"></div>
-    <div id="sumPrevious"></div>
-    <div id="points"></div>
-    <div id="turns"></div>
+    <div id="dice1">Dice 1: ${dice1}</div>
+    <div id="dice2">Dice 2: ${dice2}</div>
+    <div id="sumCurrent">Sum this round: ${currentDiceSum}</div>
+    <div id="sumPrevious">Sum previous round: ${previousDiceSum}</div>
+    <div id="points">Points: ${points}</div>
+    <div id="turns">Current turn: ${turn}</div>
     `;
-
-    document.getElementById('dice1').innerHTML = `Dice 1: ${dice1}`;
-    document.getElementById('dice2').innerHTML = `Dice 2: ${dice2}`;
-    document.getElementById('sumCurrent').innerHTML = `Sum this round: ${currentDiceSum}`;
-    document.getElementById('sumPrevious').innerHTML = `Sum previous round: ${previousDiceSum}`;
-    document.getElementById('points').innerHTML = `Points: ${points}`;
-    document.getElementById('turns').innerHTML = `Current turn: ${turn}`;
 }
 
 
