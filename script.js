@@ -65,7 +65,7 @@ function checkPlayerStatusFirstRound() {
         console.log("You lose");
     
         if (snakeEyes(currentDiceSum)) {
-            // hissss
+            console.log("Snake eyes!"); // hissss
         }
     
         didGameEnd = true;
