@@ -29,6 +29,8 @@ function updateView() {
 
 // Controller
 
+newGame();
+
 function rollDice() {
     // adding one here because 0 does not exist on a dice
     dice1 = Math.floor(Math.random() * 6) + 1;
