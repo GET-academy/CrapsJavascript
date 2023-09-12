@@ -1,15 +1,14 @@
 // Model
 
-var dice1 = 0;
-var dice2 = 0;
-var currentDiceSum = 0;
-var previousDiceSum = 0;
-var turn = 0;
-var points = 0;
-var isFirstTurn = true;
-var didGameEnd = false;
-var maxDice = 2;
-
+let dice1 = 0;
+let dice2 = 0;
+let currentDiceSum = 0;
+let previousDiceSum = 0;
+let turn = 0;
+let points = 0;
+let isFirstTurn = true;
+let didGameEnd = false;
+let maxDice = 2;
 
 // View
 
@@ -31,10 +30,14 @@ function updateView() {
 
 newGame();
 
+function getRandomDiceNumber() {
+    return Math.floor(Math.random() * 6) + 1;
+}
+
 function rollDice() {
     // adding one here because 0 does not exist on a dice
-    dice1 = Math.floor(Math.random() * 6) + 1;
-    dice2 = Math.floor(Math.random() * 6) + 1;
+    dice1 = getRandomDiceNumber();
+    dice2 = getRandomDiceNumber();
 
     return dice1 + dice2;
 }
@@ -65,11 +68,11 @@ function checkPlayerStatusFirstRound() {
 
     if (currentDiceSum == 2 || currentDiceSum == 3 || currentDiceSum == 12) {
         console.log("You lose");
-    
+
         if (snakeEyes(currentDiceSum)) {
             console.log("Snake eyes!"); // hissss
         }
-    
+
         didGameEnd = true;
     }
 }
@@ -104,6 +107,6 @@ function gameLoop() {
     previousDiceSum = currentDiceSum;
 
     if (didGameEnd) {
-        document.getElementById('rollDiceButton').disabled = true;
+        document.querySelector("#rollDiceButton").disabled = true;
     }
 }
