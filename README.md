@@ -3,7 +3,7 @@
 
 ---
 
-Her har jeg kopiert reglene fra readme'n til C# versionen:
+Her har jeg kopiert reglene fra readme'n til C# versjonen:
 
 
 The rules for the first turn:

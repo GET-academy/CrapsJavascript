@@ -31,11 +31,11 @@ function updateView() {
 newGame();
 
 function getRandomDiceNumber() {
+    // adding one here because 0 does not exist on a dice
     return Math.floor(Math.random() * 6) + 1;
 }
 
 function rollDice() {
-    // adding one here because 0 does not exist on a dice
     dice1 = getRandomDiceNumber();
     dice2 = getRandomDiceNumber();
 
