@@ -53,28 +53,22 @@ function newGame() {
     updateView();
 }
 
-function snakeEyes(inSum) {
-    if (inSum == 2) {
-        return true;
-    }
-    return false;
-}
-
 function checkPlayerStatusFirstRound() {
     if (currentDiceSum == 7 || currentDiceSum == 11) {
         console.log("You win");
         didGameEnd = true;
     }
 
-    if (currentDiceSum == 2 || currentDiceSum == 3 || currentDiceSum == 12) {
+    if (currentDiceSum == 3 || currentDiceSum == 12) {
         console.log("You lose");
-
-        if (snakeEyes(currentDiceSum)) {
-            console.log("Snake eyes!"); // hissss
-        }
-
         didGameEnd = true;
     }
+    
+    if (currentDiceSum == 2) {
+        console.log("You lose with Snake eyes!"); // hissss
+        didGameEnd = true;
+    }
+
 }
 
 function checkPlayerStatus() {
