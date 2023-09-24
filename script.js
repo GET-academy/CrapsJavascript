@@ -8,7 +8,6 @@ let turn = 0;
 let points = 0;
 let isFirstTurn = true;
 let didGameEnd = false;
-let maxDice = 2;
 
 // View
 
@@ -24,7 +23,6 @@ function updateView() {
     <div id="turns">Current turn: ${turn}</div>
     `;
 }
-
 
 // Controller
 
@@ -43,7 +41,8 @@ function rollDice() {
 }
 
 function newGame() {
-    dice1 = dice2 = 0;
+    dice1 = 0;
+    dice2 = 0;
     currentDiceSum = 0;
     previousDiceSum = 0;
     isFirstTurn = true;
