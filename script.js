@@ -82,23 +82,21 @@ function checkPlayerStatus() {
     }
 }
 
-function checkIsFirstTurn() {
+function checkFirstTurn() {
     if (!isFirstTurn) {
         checkPlayerStatus();
         return;
     }
 
-    if (isFirstTurn) {
-        checkPlayerStatusFirstRound();
-        isFirstTurn = false;
-    }
+    checkPlayerStatusFirstRound();
+    isFirstTurn = false;
 }
 
 function gameLoop() {
     turn++;
     currentDiceSum = rollDice();
 
-    checkIsFirstTurn();
+    checkFirstTurn();
 
     points += currentDiceSum;
     updateView();
